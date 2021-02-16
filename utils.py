@@ -32,7 +32,7 @@ class ReleaseGetter:
         self.update()
 
     def update(self):
-        self.releases_list = list(Github("CyberSteve777", "5Earth!5").get_user("Ryorama").get_repo(
+        self.releases_list = list(Github().get_user("Ryorama").get_repo(
             "TerrariaCraft-Bedrock").get_releases())
         temp_r = set()
         self.releases_list_str.clear()
