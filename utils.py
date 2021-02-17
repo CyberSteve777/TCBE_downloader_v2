@@ -34,14 +34,11 @@ class ReleaseGetter:
     def update(self):
         self.releases_list = list(Github().get_user("Ryorama").get_repo(
             "TerrariaCraft-Bedrock").get_releases())
-        temp_r = set()
         self.releases_list_str.clear()
         for elem in self.releases_list:
             link = elem.raw_data['assets'][0]['browser_download_url']
-            if elem.title not in temp_r:
-                self.release_link[elem.title] = link
-                self.releases_list_str.append(elem.title)
-                temp_r.add(elem.title)
+            self.release_link[elem.title] = link
+            self.releases_list_str.append(elem.title)
 
     def __iter__(self):
         for key, value in self.release_link:
