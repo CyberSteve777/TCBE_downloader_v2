@@ -37,8 +37,9 @@ class ReleaseGetter:
         self.releases_list_str.clear()
         for elem in self.releases_list:
             link = elem.raw_data['assets'][0]['browser_download_url']
-            self.release_link[elem.title] = link
-            self.releases_list_str.append(elem.title)
+            version = re.match('https://github.com/(.+)/(.+)/(.+)/(.+)/(.+)/(.+)', link).groups()[-2]
+            self.release_link[version] = link
+            self.releases_list_str.append(version)
 
     def __iter__(self):
         for key, value in self.release_link:
