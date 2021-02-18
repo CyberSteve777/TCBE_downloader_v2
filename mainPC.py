@@ -5,7 +5,7 @@ from DownloaderUI import Ui_Form
 from utils import ReleaseGetter
 
 
-class GUIDownloader(Ui_Form, QWidget):
+class GUIDownloader(QWidget, Ui_Form):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
@@ -16,9 +16,10 @@ class GUIDownloader(Ui_Form, QWidget):
         self.show()
 
     def initUI(self):
-        self.update_list()
+        self.comboBox.addItems(self.getter.releases_list_str)
         self.pushButton.clicked.connect(self.customPath)
         self.pushButton_2.clicked.connect(self.download)
+        self.pushButton_3.clicked.connect(self.update_list)
 
     def customPath(self):
         path = QFileDialog.getExistingDirectory()

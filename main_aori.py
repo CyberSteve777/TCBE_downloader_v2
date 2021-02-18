@@ -8,4 +8,4 @@ if __name__ == '__main__':
     version = input("Type one from releases above (full title): ")
     print("Downloading to:", os.getcwd())
     g.download(version)
-    print("Successfully downloaded to: ", os.getcwd())
+    print("Successfully downloaded to:", os.getcwd())
